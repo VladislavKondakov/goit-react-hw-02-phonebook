@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
 class ContactList extends React.Component {
   handleDeleteContact = (id) => {
@@ -30,3 +31,16 @@ class ContactList extends React.Component {
 }
 
 export default ContactList;
+
+ContactList.propTypes = {
+  contacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  filter: PropTypes.string.isRequired,
+  onFilterChange: PropTypes.func.isRequired,
+  onDeleteContact: PropTypes.func.isRequired,
+};
